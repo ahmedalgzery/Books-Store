@@ -1,4 +1,4 @@
-# bookstore
+# Book Store
 
 A new Flutter project.
 
