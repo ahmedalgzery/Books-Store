@@ -1,5 +1,5 @@
 import 'package:bookstore/features/Home/presentation/view/widgets/custom_app_bar.dart';
-import 'package:bookstore/features/Home/presentation/view/widgets/custom_list_view_item.dart';
+import 'package:bookstore/features/Home/presentation/view/widgets/featured_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -10,10 +10,8 @@ class HomeViewBody extends StatelessWidget {
     return const Column(
       children: [
         CustomAppBar(),
-        CustomListViewItem(),
+        FeaturedBooksListView(),
       ],
     );
   }
 }
-
-
