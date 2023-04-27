@@ -10,7 +10,7 @@ class BsetSellerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics:const NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) => const Padding(
         padding: EdgeInsets.only(top: 20),
