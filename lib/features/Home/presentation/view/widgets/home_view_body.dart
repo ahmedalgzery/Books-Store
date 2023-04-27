@@ -1,5 +1,5 @@
 import 'package:bookstore/core/utils/styles.dart';
-import 'package:bookstore/features/Home/presentation/view/widgets/best_seller_list_view_item.dart';
+import 'package:bookstore/features/Home/presentation/view/widgets/best_seller_item.dart';
 import 'package:bookstore/features/Home/presentation/view/widgets/custom_app_bar.dart';
 import 'package:bookstore/features/Home/presentation/view/widgets/featured_books_list_view.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +26,9 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(
             height: 20.0,
           ),
-          BestSellerListViewItem(),
+          BestSellerItem(),
         ],
       ),
     );
   }
 }
-

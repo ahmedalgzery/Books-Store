@@ -1,9 +1,10 @@
+import 'package:bookstore/constants.dart';
 import 'package:bookstore/core/utils/assets.dart';
 import 'package:bookstore/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+class BestSellerItem extends StatelessWidget {
+  const BestSellerItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,24 @@ class BestSellerListViewItem extends StatelessWidget {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width * .5,
-                child: const Text(
+                child:  Text(
                   'Harry Potter and the Goblet of Fire',
-                  style: Styles.testStyle20,
+                  style: Styles.testStyle20.copyWith(
+                    fontFamily: kGTSectraFine,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
+              const SizedBox(
+                height: 3.0,
+              ),
+               Text('J.K. Rowling',style: Styles.testStyle14.copyWith(
+                fontWeight: FontWeight.bold,
+              ),),
+               const SizedBox(
+                height: 3.0,
+              ), 
             ],
           ),
         ],
