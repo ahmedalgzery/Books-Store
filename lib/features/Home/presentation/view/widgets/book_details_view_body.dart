@@ -1,3 +1,4 @@
+import 'package:bookstore/core/utils/styles.dart';
 import 'package:bookstore/features/Home/presentation/view/widgets/custom_book_details_app_bar.dart';
 import 'package:bookstore/features/Home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,25 @@ class BookDetailsViewBody extends StatelessWidget {
         children: [
           const CustomBookDetailesAppBar(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .17),
+            padding: EdgeInsets.symmetric(horizontal: width * .2),
             child: const CustomBookImage(),
+          ),
+          const SizedBox(
+            height: 35,
+          ),
+          const Text(
+            'The Jungle Book',
+            style: Styles.testStyle30,
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          Text(
+            'Ahmed Algzery',
+            style: Styles.testStyle18.copyWith(
+              fontStyle: FontStyle.italic,
+              color: Colors.white.withOpacity(.7),
+            ),
           ),
         ],
       ),
