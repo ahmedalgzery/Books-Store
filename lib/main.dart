@@ -24,5 +24,3 @@ class BooksStore extends StatelessWidget {
     );
   }
 }
-
-
