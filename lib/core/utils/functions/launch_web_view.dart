@@ -8,8 +8,6 @@ Future<void> launchInWebViewOrVC(context, Uri url) async {
     webViewConfiguration: const WebViewConfiguration(
         headers: <String, String>{'my_header_key': 'my_header_value'}),
   )) {
-    CustomSnacBar(context, 'Could not launch $url');
+    CustomSnacbar(context, 'Could not launch $url');
   }
 }
-
-

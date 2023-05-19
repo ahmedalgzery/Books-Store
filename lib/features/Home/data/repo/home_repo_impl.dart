@@ -1,28 +1,30 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:dartz/dartz.dart';
 
 import 'package:bookstore/core/errors/failure.dart';
 import 'package:bookstore/core/utils/api_service.dart';
 import 'package:bookstore/features/Home/data/Models/book_model/book_model.dart';
 import 'package:bookstore/features/Home/data/repo/home_repo.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepoImpl implements HomeRepo {
-  ApiService apiService;
-  HomeRepoImpl({
-    required this.apiService,
-  });
+  final ApiService apiService;
+
+  HomeRepoImpl(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiService.get(
           endPoint:
               'volumes?Filtering=free-ebooks&Sorting=newest &q=computer science');
-      List<BookModel> books = List.empty();
-
-      for (var item in data['item']) {
-        books.add(BookModel.fromJson(item));
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        try {
+          books.add(BookModel.fromJson(item));
+        } catch (e) {
+          books.add(BookModel.fromJson(item));
+        }
       }
+
       return right(books);
     } catch (e) {
       if (e is DioError) {
@@ -39,16 +41,15 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async{
-     try {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    try {
       var data = await apiService.get(
-          endPoint:
-              'volumes?Filtering=free-ebooks&q=subject:Programming');
-      List<BookModel> books = List.empty();
-
-      for (var item in data['item']) {
+          endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
+      List<BookModel> books = [];
+      for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
+
       return right(books);
     } catch (e) {
       if (e is DioError) {
@@ -63,18 +64,19 @@ class HomeRepoImpl implements HomeRepo {
       );
     }
   }
-  
+
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category})async {
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
     try {
       var data = await apiService.get(
           endPoint:
               'volumes?Filtering=free-ebooks&Sorting=relevance &q=subject:Programming');
-      List<BookModel> books = List.empty();
-
-      for (var item in data['item']) {
+      List<BookModel> books = [];
+      for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
+
       return right(books);
     } catch (e) {
       if (e is DioError) {
