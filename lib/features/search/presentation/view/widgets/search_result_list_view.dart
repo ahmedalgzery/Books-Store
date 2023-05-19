@@ -1,4 +1,3 @@
-import 'package:bookstore/features/Home/presentation/view/widgets/best_seller_item.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultListView extends StatelessWidget {
@@ -10,7 +9,7 @@ class SearchResultListView extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) => const Padding(
         padding: EdgeInsets.only(top: 20),
-        child: BookListViewItem(),
+        // child: BookListViewItem(bookModel: null,),
       ),
       itemCount: 10,
     );
