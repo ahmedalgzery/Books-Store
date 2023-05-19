@@ -12,11 +12,11 @@ import 'core/utils/service_locator.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(const Bookly());
+  runApp(const BooksStore());
 }
 
-class Bookly extends StatelessWidget {
-  const Bookly({Key? key}) : super(key: key);
+class BooksStore extends StatelessWidget {
+  const BooksStore({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

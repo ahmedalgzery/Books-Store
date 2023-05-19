@@ -1,44 +1,54 @@
-import 'package:bookstore/core/utils/functions/launch_web_view.dart';
-import 'package:bookstore/core/widgets/custom_button.dart';
+
+import 'package:bookstore/core/utils/functions/launch_url.dart';
 import 'package:bookstore/features/Home/data/Models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
-class BookAction extends StatelessWidget {
-  const BookAction({super.key, required this.bookModel});
+import '../../../../../core/widgets/custom_button.dart';
+
+class BooksAction extends StatelessWidget {
+  const BooksAction({super.key, required this.bookModel});
+
   final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
-          Expanded(
-            child: CustomButton(
-              text: 'Free',
-              textColor: Colors.black,
-              onPressed: () {},
-              backgroundColor: Colors.white,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  bottomLeft: Radius.circular(16.0)),
+          const Expanded(
+              child: CustomButton(
+            text: 'Free',
+            backgroundColor: Colors.white,
+            textColor: Colors.black,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
             ),
-          ),
+          )),
           Expanded(
-            child: CustomButton(
-              text: 'Free Preview',
-              textColor: Colors.white,
-              onPressed: () {
-                Uri url = Uri.parse(bookModel.volumeInfo.previewLink!);
-                launchInWebViewOrVC(context,url);
-              },
-              backgroundColor: const Color(0xffEF8262),
-              borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(16.0),
-                  bottomRight: Radius.circular(16.0)),
+              child: CustomButton(
+            onPressed: () {
+              launchCustomUrl(context, 'bookModel.volumeInfo.previewLink');
+            },
+            //fontSize: 16,
+            text: getText(bookModel),
+            backgroundColor: const Color(0xffEF8262),
+            textColor: Colors.white,
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(16),
+              bottomRight: Radius.circular(16),
             ),
-          ),
+          )),
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
+      return 'Not Avaliable';
+    } else {
+      return 'Preview';
+    }
   }
 }
