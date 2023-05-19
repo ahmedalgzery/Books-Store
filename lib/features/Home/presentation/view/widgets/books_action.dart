@@ -1,9 +1,11 @@
+import 'package:bookstore/core/utils/functions/launch_web_view.dart';
 import 'package:bookstore/core/widgets/custom_button.dart';
+import 'package:bookstore/features/Home/data/Models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 class BookAction extends StatelessWidget {
-  const BookAction({super.key});
-
+  const BookAction({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +14,7 @@ class BookAction extends StatelessWidget {
         children: [
           Expanded(
             child: CustomButton(
-              text: '19.99 \$',
+              text: 'Free',
               textColor: Colors.black,
               onPressed: () {},
               backgroundColor: Colors.white,
@@ -25,7 +27,10 @@ class BookAction extends StatelessWidget {
             child: CustomButton(
               text: 'Free Preview',
               textColor: Colors.white,
-              onPressed: () {},
+              onPressed: () {
+                Uri url = Uri.parse(bookModel.volumeInfo.previewLink!);
+                launchInWebViewOrVC(context,url);
+              },
               backgroundColor: const Color(0xffEF8262),
               borderRadius: const BorderRadius.only(
                   topRight: Radius.circular(16.0),
