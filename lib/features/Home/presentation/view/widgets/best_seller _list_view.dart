@@ -15,19 +15,29 @@ class BsetSellerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NewsetBooksCubit, NewsetBooksState>(
       builder: (context, state) {
+        // Check if the state is NewsetBooksSuccess
         if (state is NewsetBooksSuccess) {
+          // If it is, display a ListView.builder to build a list of best-selling books
           return ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) =>  Padding(
               padding: const EdgeInsets.only(top: 20),
+              // Use the BookListViewItem widget to display each book in the list
               child: BookListViewItem(bookModel: state.books[index],),
             ),
+            // Set the itemCount to limit the number of books displayed (in this case, 10)
             itemCount: 10,
           );
-        } else if (state is NewsetBooksFailure) {
-          return CustomErorrWidget(errMessage: state.errMessage);
-        } else {
+        } 
+        // Check if the state is NewsetBooksFailure
+        else if (state is NewsetBooksFailure) {
+          // If it is, display a CustomErrorWidget with the error message
+          return CustomErrorWidget(errMessage: state.errMessage);
+        } 
+        // If the state is not NewsetBooksSuccess or NewsetBooksFailure, it is in a loading state
+        else {
+          // Display a CustomLoadingIndicator while fetching the newest books
           return const CustomLoadingIndicator();  
         }
       },

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage({super.key, required this.imageUrl});
   final String imageUrl;
+  
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -13,9 +14,11 @@ class CustomBookImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.fill,
           imageUrl: imageUrl,
+          // Placeholder shown while the image is being loaded
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(),
           ),
+          // Error widget shown when an error occurs while loading the image
           errorWidget: (context, url, error) => const Icon(Icons.error_outline),
         ),
       ),

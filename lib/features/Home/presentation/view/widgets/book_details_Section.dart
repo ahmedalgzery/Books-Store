@@ -11,6 +11,7 @@ import 'package:bookstore/features/Home/presentation/view/widgets/custom_book_im
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({super.key, required this.bookModel});
   final BookModel bookModel;
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -18,41 +19,33 @@ class BookDetailsSection extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * .2),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.2),
           child: CustomBookImage(
             imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
           ),
         ),
-        const SizedBox(
-          height: 35,
-        ),
+        const SizedBox(height: 35),
         Text(
           bookModel.volumeInfo.title!,
           style: Styles.textStyle30,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(
-          height: 6,
-        ),
+        const SizedBox(height: 6),
         Text(
           bookModel.volumeInfo.authors![0],
           style: Styles.textStyle18.copyWith(
             fontStyle: FontStyle.italic,
-            color: Colors.white.withOpacity(.7),
+            color: Colors.white.withOpacity(0.7),
           ),
         ),
-        const SizedBox(
-          height: 16.0,
-        ),
+        const SizedBox(height: 16.0),
         BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
           count: bookModel.volumeInfo.pageCount ?? 0,
           rating: bookModel.volumeInfo.pageCount ?? 0,
         ),
-        const SizedBox(
-          height: 37.0,
-        ),
-         BooksAction(bookModel: bookModel,),
+        const SizedBox(height: 37.0),
+        BooksAction(bookModel: bookModel),
       ],
     );
   }

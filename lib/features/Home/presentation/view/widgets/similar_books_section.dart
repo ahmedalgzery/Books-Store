@@ -10,6 +10,7 @@ class SimilarBooksSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Title for the section
         Text(
           'You can also like',
           style: Styles.textStyle14.copyWith(
@@ -19,6 +20,7 @@ class SimilarBooksSection extends StatelessWidget {
         const SizedBox(
           height: 16.0,
         ),
+        // Display the list of similar books using SimilarBookListView widget
         const SimilarBookListView(),
       ],
     );

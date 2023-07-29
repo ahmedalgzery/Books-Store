@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
-  const SplashViewBody({super.key});
+  const SplashViewBody({super.key,});
 
   @override
   State<SplashViewBody> createState() => _SplashViewBodyState();
@@ -35,15 +35,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(AssetesData.logo),
+        // Display the logo image.
+        Image.asset(AssetsData.logo),
         const SizedBox(
           height: 4,
         ),
+        // SlidingText widget to show sliding animation of the text.
         SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
   }
 
+  // Initialize the sliding animation.
   void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
@@ -56,6 +59,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     animationController.forward();
   }
 
+  // Navigate to the home view after a delay.
   void navigateToHome() {
     Future.delayed(const Duration(seconds: 3), () {
       GoRouter.of(context).push(AppRouter.kHomeView);

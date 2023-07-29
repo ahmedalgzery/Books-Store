@@ -17,13 +17,16 @@ class CustomAppBar extends StatelessWidget {
       ),
       child: Row(
         children: [
+          // App logo displayed using an image asset
           Image.asset(
-            AssetesData.logo,
+            AssetsData.logo,
             height: 20.0,
           ),
           const Spacer(),
+          // Icon button to navigate to the search view
           IconButton(
             onPressed: () {
+              // When the search icon is pressed, navigate to the search view using GoRouter
               GoRouter.of(context).push(AppRouter.kSearchView);
             },
             icon: const Icon(
