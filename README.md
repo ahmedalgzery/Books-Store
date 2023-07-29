@@ -16,6 +16,16 @@ The Bookstore App is a mobile application that allows users to explore and disco
 
 - **Splash Screen**: The app starts with an attractive splash screen, featuring a sliding text animation that transitions to the home screen after a few seconds.
 
+## Screenshots
+
+Here are some screenshots of the Bookstore App:
+
+![Home View](/home_view.png)
+*Home View showcasing featured and newest books.*
+
+![Book Details View](/book_details_view.png)
+*Book Details View displaying information about a selected book.*
+
 ## Installation
 
 To run the Bookstore App on your device or emulator, follow these steps:
@@ -66,4 +76,4 @@ We would like to thank the Flutter community and all the contributors of the thi
 
 ---
 
-*Note: This README is a general template and may need customization to reflect the specific details of the Bookstore App. It is recommended to update the sections with accurate information about the app's features, installation process, and dependencies before publishing.*
+*Note: This README is a general template and may need customization to reflect the specific details of the Bookstore App. It is recommended to update the sections with accurate information about the app's features, installation process, dependencies, and screenshots before publishing.*
